@@ -12,6 +12,8 @@ class FractionCalculator
       return (first_fraction * second_fraction).to_s
     elsif operator == '/'
       return (first_fraction / second_fraction).to_s
+    else
+      return "ERROR - invalid operator"
     end
   end
 end

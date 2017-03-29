@@ -30,4 +30,11 @@ describe FractionCalculator do
         expect(result).to eq("2/3")
     end
   end
+
+  context 'invalid operator given' do
+    it 'returns an ERROR message for invalid operator given' do
+      result = fraction_calculator.calculate_fraction("1/3", "2/4", "@")
+      expect(result).to eq("ERROR - invalid operator")
+    end
+  end
 end
