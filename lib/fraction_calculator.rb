@@ -6,6 +6,8 @@ class FractionCalculator
 
     if operator == '+'
       return (first_fraction + second_fraction).to_s
+    elsif operator == '-'
+      return (first_fraction - second_fraction).to_s
     end
   end
 end
