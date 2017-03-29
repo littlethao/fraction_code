@@ -16,4 +16,11 @@ describe FractionCalculator do
         expect(result).to eq("-1/6")
     end
   end
+
+  context 'multiplication' do
+    it 'multiplies the first fraction times the second fraction and returns the result as fraction' do
+        result = fraction_calculator.calculate_fraction("1/3", "2/4", "*")
+        expect(result).to eq("1/6")
+    end
+  end
 end
