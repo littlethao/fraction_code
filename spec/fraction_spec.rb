@@ -39,4 +39,11 @@ describe "adding fractions" do
     end
   end
 
+  describe "3 + 5" do
+    it "equals 8" do
+      sum = Fraction.new(3, 1) + Fraction.new(5, 1)
+      expect(sum).to eq(8)
+    end
+  end
+
 end
