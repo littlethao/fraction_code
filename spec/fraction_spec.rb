@@ -7,7 +7,7 @@ describe "adding fractions" do
     end
 
     def +(fraction)
-      numerator
+      numerator + fraction.numerator
     end
   end
 
@@ -21,6 +21,13 @@ describe "adding fractions" do
   describe "1 + 0" do
     it "equals 1" do
       sum = Fraction.new(1, 1) + Fraction.new(0, 1)
+      expect(sum).to eq(1)
+    end
+  end
+
+  describe "0 + 1" do
+    it "equals 1" do
+      sum = Fraction.new(0, 1) + Fraction.new(1, 1)
       expect(sum).to eq(1)
     end
   end
