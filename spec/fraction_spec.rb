@@ -112,12 +112,19 @@ describe "adding fractions" do
     end
   end
 
-
   describe "1/4 + 1/2" do
     it "equals 3/4" do
       sum = Fraction.new(1, 4) + Fraction.new(1, 2)
       expect(sum.numerator).to eq(3)
       expect(sum.denominator).to eq(4)
+    end
+  end
+
+  describe "-1/5 + 1/2" do
+    it "equals 3/10" do
+      sum = Fraction.new(-1, 5) + Fraction.new(1, 2)
+      expect(sum.numerator).to eq(3)
+      expect(sum.denominator).to eq(10)
     end
   end
 end
