@@ -127,4 +127,12 @@ describe "adding fractions" do
       expect(sum.denominator).to eq(10)
     end
   end
+
+  describe "-1/5 + (-1/5)" do
+    it "equals -2/5" do
+      sum = Fraction.new(-1, 5) + Fraction.new(-1, 5)
+      expect(sum.numerator).to eq(-2)
+      expect(sum.denominator).to eq(5)
+    end
+  end
 end
