@@ -9,7 +9,12 @@ describe "adding fractions" do
 
     def +(fraction)
       lcm = denominator.lcm(fraction.denominator)
-      Fraction.new(numerator * (lcm/denominator) + (lcm/fraction.denominator) * fraction.numerator, lcm)
+      result = Fraction.new(numerator * (lcm/denominator) + (lcm/fraction.denominator) * fraction.numerator, lcm)
+      if (result.numerator == result.denominator)
+        1
+      else
+        result
+      end
     end
 
     def to_i
@@ -97,6 +102,13 @@ describe "adding fractions" do
       sum = Fraction.new(1, 4) + Fraction.new(1, 3)
       expect(sum.numerator).to eq(7)
       expect(sum.denominator).to eq(12)
+    end
+  end
+
+  describe "1/2 + 1/2" do
+    it "equals 1" do
+      sum = Fraction.new(1, 2) + Fraction.new(1, 2)
+      expect(sum).to eq(1)
     end
   end
 end
