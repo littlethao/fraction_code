@@ -4,19 +4,14 @@ describe "adding fractions" do
 
     def initialize(numerator, denominator)
       gcd = numerator.gcd(denominator)
-      @numerator = numerator / gcd
-      @denominator = denominator / gcd
+      factor = denominator < 0 ? -1 : 1
+      @numerator = numerator * factor / gcd
+      @denominator = denominator * factor / gcd
     end
 
     def +(fraction)
       lcm = denominator.lcm(fraction.denominator)
-      result = Fraction.new(numerator * (lcm/denominator) + (lcm/fraction.denominator) * fraction.numerator, lcm)
-      result
-      # if (result.numerator == result.denominator)
-      #   1
-      # else
-      #   result
-      # end
+      Fraction.new(numerator * (lcm/denominator) + (lcm/fraction.denominator) * fraction.numerator, lcm)
     end
 
     def to_i
@@ -161,6 +156,22 @@ describe "adding fractions" do
         fraction = Fraction.new(4, 8)
         expect(fraction.numerator).to eq(1)
         expect(fraction.denominator).to eq(2)
+      end
+    end
+
+    describe "-2/6" do
+      it "reduces to -1/3" do
+        fraction = Fraction.new(-2, 6)
+        expect(fraction.numerator).to eq(-1)
+        expect(fraction.denominator).to eq(3)
+      end
+    end
+
+    describe  "3/-7" do
+      it "reduces to -3/7" do
+        fraction = Fraction.new(3, -7)
+        expect(fraction.numerator).to eq(-3)
+        expect(fraction.denominator).to eq(7)
       end
     end
   end
