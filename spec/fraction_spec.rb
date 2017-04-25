@@ -3,18 +3,20 @@ describe "adding fractions" do
     attr_reader :numerator, :denominator
 
     def initialize(numerator, denominator)
-      @numerator = numerator
-      @denominator = denominator
+      gcd = numerator.gcd(denominator)
+      @numerator = numerator / gcd
+      @denominator = denominator / gcd
     end
 
     def +(fraction)
       lcm = denominator.lcm(fraction.denominator)
       result = Fraction.new(numerator * (lcm/denominator) + (lcm/fraction.denominator) * fraction.numerator, lcm)
-      if (result.numerator == result.denominator)
-        1
-      else
-        result
-      end
+      result
+      # if (result.numerator == result.denominator)
+      #   1
+      # else
+      #   result
+      # end
     end
 
     def to_i
@@ -108,7 +110,8 @@ describe "adding fractions" do
   describe "1/2 + 1/2" do
     it "equals 1" do
       sum = Fraction.new(1, 2) + Fraction.new(1, 2)
-      expect(sum).to eq(1)
+      expect(sum.numerator).to eq(1)
+      expect(sum.denominator).to eq(1)
     end
   end
 
@@ -133,6 +136,32 @@ describe "adding fractions" do
       sum = Fraction.new(-1, 5) + Fraction.new(-1, 5)
       expect(sum.numerator).to eq(-2)
       expect(sum.denominator).to eq(5)
+    end
+  end
+
+  describe "1/4 + 1/4" do
+    it "equals 1/2" do
+      sum = Fraction.new(1, 4) + Fraction.new(1, 4)
+      expect(sum.numerator).to eq(1)
+      expect(sum.denominator).to eq(2)
+    end
+  end
+
+  describe "reducing fractions" do
+    describe "1/2" do
+      it "reduces to 1/2" do
+        fraction = Fraction.new(1, 2)
+        expect(fraction.numerator).to eq(1)
+        expect(fraction.denominator).to eq(2)
+      end
+    end
+
+    describe "4/8" do
+      it "reduces to 1/2" do
+        fraction = Fraction.new(4, 8)
+        expect(fraction.numerator).to eq(1)
+        expect(fraction.denominator).to eq(2)
+      end
     end
   end
 end
